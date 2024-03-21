@@ -6,6 +6,33 @@
     }
 }
 
+public class SimpleDataBase<T>
+{
+    private List<T> storedData;
+    private List<DateTime> inputData;
+
+    public SimpleDataBase()
+    {
+        storedData = new List<T>();
+        inputData = new List<DateTime>();
+    }
+
+    public void AddNewData(T data)
+    {
+        this.storedData.Add(data);
+        this.inputData.Add(DateTime.Now);
+    }
+    public void PrintAllData()
+    {
+        for (int i = 0; i < storedData.Count; i++)
+        {
+            Console.WriteLine("Data" + i + " berisi: " + this.storedData[i] +
+                ", yang disimpan pada waktu UTC: " + this.inputData[i]);
+
+        }
+    }
+}
+
 class Program
 {
     static void Main(string[] args)
@@ -19,32 +46,5 @@ class Program
         dataBase.AddNewData(07);
         dataBase.AddNewData(9);
         dataBase.PrintAllData();
-    }
-}
-
-public class SimpleDataBase<T>
-{
-    private List <T> storedData;
-    private List<DateTime> inputData;
-
-    public SimpleDataBase()
-    {
-        storedData = new List <T>();
-        inputData = new List <DateTime>();
-    }
-
-    public void AddNewData(T data)
-    {
-        this.storedData.Add(data);
-        this.inputData.Add(DateTime.Now);
-    }
-    public void PrintAllData()
-    {
-        for (int i = 0; i < storedData.Count; i++)
-        {
-            Console.WriteLine("Data" + i + " berisi: " + this.storedData[i] + 
-                ", yang disimpan pada waktu UTC: " + this.inputData[i]);
-
-        }
     }
 }
